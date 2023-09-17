@@ -17,7 +17,6 @@ export const getDevice = async (req, res) => {
     if (!device) {
       return res.status(404).send(device);
     }
-    // const device = await Device.findOne({ _id: id });
     return res.status(200).send(device);
   } catch (error) {
     console.log(error);
