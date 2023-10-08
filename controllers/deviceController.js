@@ -2,7 +2,7 @@ import Device from "../models/Device.js";
 
 export const getAllDevices = async (req, res) => {
   try {
-    const devices = await Device.find();
+    const devices = await Device.find().populate("location").exec();
     return res.status(200).json(devices);
   } catch (error) {
     console.log(error);
@@ -27,6 +27,7 @@ export const getDevice = async (req, res) => {
 export const createDevice = async (req, res) => {
   try {
     const device = req.body;
+    console.log(device);
     await Device.create(device);
     return res.status(201).send();
   } catch (error) {

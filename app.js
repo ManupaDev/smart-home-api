@@ -3,11 +3,13 @@
 import express from "express";
 import mongoose from "mongoose";
 import deviceRouter from "./routes/deviceRouter.js";
+import locationRouter from "./routes/locationRouter.js";
 
 const app = express();
 app.use(express.json());
 
 app.use("/api/devices", deviceRouter);
+app.use("/api/locations", locationRouter);
 
 const PORT = 8000;
 
