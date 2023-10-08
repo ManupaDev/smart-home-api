@@ -2,7 +2,10 @@ import Device from "../models/Device.js";
 
 export const getAllDevices = async (req, res) => {
   try {
-    const devices = await Device.find().populate("location").exec();
+    const devices = await Device.find()
+      .populate("location")
+      .select("name location")
+      .exec();
     return res.status(200).json(devices);
   } catch (error) {
     console.log(error);
@@ -73,7 +76,7 @@ export const partiallyUpdateDevice = async (req, res) => {
   try {
     const { id } = req.params;
     const data = req.body;
-    const found = Device.findOne({ _id: id });
+    const found = await Device.findOne({ _id: id });
     if (!found) {
       return res.status(404).send();
     }
