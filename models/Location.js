@@ -6,9 +6,6 @@ const locationSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  devices: {
-    type: [{ type: mongoose.Schema.Types.ObjectId, ref: "Device" }],
-  },
 });
 
 const Location = mongoose.model("Location", locationSchema);
