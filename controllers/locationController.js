@@ -13,7 +13,7 @@ export const getAllLocations = async (req, res) => {
 export const getLocation = async (req, res) => {
   try {
     const { id } = req.params;
-    const location = await Location.findById(id).populate("devices").exec();
+    const location = await Location.findById(id);
     if (!location) {
       return res.status(404).send(location);
     }
@@ -45,4 +45,3 @@ export const deleteLocation = async (req, res) => {
     res.status(500).send();
   }
 };
-

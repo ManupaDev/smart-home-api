@@ -14,6 +14,7 @@ const deviceSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  location: { type: mongoose.Schema.Types.ObjectId, ref: "Location" },
 });
 
 const Device = mongoose.model("Device", deviceSchema);

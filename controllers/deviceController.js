@@ -10,17 +10,17 @@ export const getAllDevices = async (req, res) => {
   }
 };
 
-export const getDevice = async (req, res) => {
+export const getDevice = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const device = await Device.findById(id);
+    const device = await Device.findById(id).populate("location").exec();
     if (!device) {
-      return res.status(404).send(device);
+      throw new Error();
     }
     return res.status(200).send(device);
   } catch (error) {
     console.log(error);
-    res.status(500).send();
+    next(error);
   }
 };
 
