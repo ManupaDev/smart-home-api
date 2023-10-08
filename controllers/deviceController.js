@@ -8,8 +8,7 @@ export const getAllDevices = async (req, res) => {
       .exec();
     return res.status(200).json(devices);
   } catch (error) {
-    console.log(error);
-    res.status(500).send();
+    next(error);
   }
 };
 
@@ -22,7 +21,6 @@ export const getDevice = async (req, res, next) => {
     }
     return res.status(200).send(device);
   } catch (error) {
-    console.log(error);
     next(error);
   }
 };
@@ -34,8 +32,7 @@ export const createDevice = async (req, res) => {
     await Device.create(device);
     return res.status(201).send();
   } catch (error) {
-    console.log(error);
-    res.status(500).send();
+    next(error);
   }
 };
 
@@ -45,8 +42,7 @@ export const deleteDevice = async (req, res) => {
     await Device.findByIdAndDelete(id);
     res.status(204).send();
   } catch (error) {
-    console.log(error);
-    res.status(500).send();
+    next(error);
   }
 };
 
@@ -67,8 +63,7 @@ export const fullyUpdateDevice = async (req, res) => {
 
     return res.status(204).send();
   } catch (error) {
-    console.log(error);
-    res.status(500).send();
+    next(error);
   }
 };
 
@@ -85,7 +80,6 @@ export const partiallyUpdateDevice = async (req, res) => {
     });
     return res.status(204).send();
   } catch (error) {
-    console.log(error);
-    res.status(500).send();
+    next(error);
   }
 };
