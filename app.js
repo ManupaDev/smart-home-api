@@ -5,12 +5,14 @@ import mongoose from "mongoose";
 import deviceRouter from "./routes/deviceRouter.js";
 import locationRouter from "./routes/locationRouter.js";
 import GlobalErrorHandlerMiddleware from "./middleware/global-error-handling.js";
+import authRouter from "./routes/authRouter.js";
 
 const app = express();
 app.use(express.json());
 
 app.use("/api/devices", deviceRouter);
 app.use("/api/locations", locationRouter);
+app.use("/api/auth", authRouter);
 
 app.use(GlobalErrorHandlerMiddleware);
 
