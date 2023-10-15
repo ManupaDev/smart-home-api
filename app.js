@@ -9,16 +9,6 @@ import GlobalErrorHandlerMiddleware from "./middleware/global-error-handling.js"
 const app = express();
 app.use(express.json());
 
-// app.use((req, res, next) => {
-//   console.log("Hello I will run first");
-//   next();
-// });
-
-// app.use((req, res, next) => {
-//   console.log("Hello I will run second");
-//   next();
-// });
-
 app.use("/api/devices", deviceRouter);
 app.use("/api/locations", locationRouter);
 
