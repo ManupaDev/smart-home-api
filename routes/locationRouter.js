@@ -7,14 +7,17 @@ import {
   getAllLocations,
   getLocation,
 } from "../controllers/locationController.js";
+import { protect } from "../controllers/authController.js";
+
+
 
 //* /api/locations
 const locationRouter = express.Router();
 
 //* /api/locations
-locationRouter.route("/").get(getAllLocations).post(createLocation);
+locationRouter.route("/").get(getAllLocations).post(protect, createLocation);
 
 //* /api/locations/:id
-locationRouter.route("/:id").get(getLocation).delete(deleteLocation);
+locationRouter.route("/:id").get(getLocation).delete(protect, deleteLocation);
 
 export default locationRouter;
